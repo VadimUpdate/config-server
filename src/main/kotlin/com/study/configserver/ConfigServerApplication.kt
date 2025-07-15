@@ -1,4 +1,4 @@
-package com.example.configserver
+package com.study.config
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
