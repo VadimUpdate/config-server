@@ -1,5 +1,5 @@
 
-package com.study.config
+package com.study.configserver
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

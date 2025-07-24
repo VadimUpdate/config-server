@@ -1,5 +1,4 @@
-
-package com.study.config
+package com.study.configserver
 
 import org.springframework.cloud.config.environment.Environment
 import org.springframework.cloud.config.environment.PropertySource
@@ -16,15 +15,12 @@ class DatabaseEnvironmentRepository(
         val env = Environment(application, profile ?: "default")
 
         val sql = """
-            SELECT setting_id, value
-            FROM user_setting_value
-            WHERE user_id = :userId
+            SELECT name, default_value
+            FROM setting
         """
 
-        val params = mapOf("userId" to 24)
-
-        val settings = jdbcTemplate.query(sql, params) { rs, _ ->
-            rs.getString("setting_id") to rs.getString("value")
+        val settings = jdbcTemplate.query(sql) { rs, _ ->
+            rs.getString("name") to rs.getString("default_value")
         }.toMap()
 
         env.add(PropertySource("database", settings))
