@@ -16,7 +16,7 @@ class DatabaseEnvironmentRepository(
 
         val sql = """
             SELECT name, default_value
-            FROM setting
+            FROM setting, setting_sbp
         """
 
         val settings = jdbcTemplate.query(sql) { rs, _ ->
